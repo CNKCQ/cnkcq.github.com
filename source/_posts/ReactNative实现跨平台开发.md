@@ -7,8 +7,9 @@ tags: [iOS,react native,Android]
 ### 一、应用场景
   我们谁都不想重复造轮子，我们都希望write once run anywhere，react native 现在给你这个机会
   先上图：
+<!-- more -->
   ![](http://7xslr9.com1.z0.glb.clouddn.com/ReactNativeiOS.png)![](http://7xslr9.com1.z0.glb.clouddn.com/ReactNativeAndroid.png)
-  <!-- more -->
+  
 ### 二、简单用例
   1、简单实现一个历史记录的界面
   在这里我就不谈环境部署了，按着官方文档一步一步来就可以了
