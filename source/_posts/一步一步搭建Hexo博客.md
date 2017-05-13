@@ -63,7 +63,6 @@ tags: [iOS,Hexo,博客]
   ```
   用浏览器打开(http://localhost:4000)
   你就可以欣赏到hexo个人主页的效果了。
-  ![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)![断货](http://7xslr9.com1.z0.glb.clouddn.com/kingcqduanhuo%402x.png)
 
 
 
