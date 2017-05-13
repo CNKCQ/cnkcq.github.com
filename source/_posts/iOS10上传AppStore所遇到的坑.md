@@ -1,11 +1,12 @@
 title: iOS10上传AppStore所遇到的坑
 date: 2016-09-25 9:58:12
 tags: [iOS,博客]
-
+---
 
 苹果的反馈邮件：
 Dear developer,
 We have discovered one or more issues with your recent delivery for "城满财富". To process your delivery, the following issues must be corrected:
+<!-- more -->
 This app attempts to access privacy-sensitive data without a usage description. The app's Info.plist must contain an NSContactsUsageDescription key with a string value explaining to the user how the app uses this data.
 This app attempts to access privacy-sensitive data without a usage description. The app's Info.plist must contain an NSCalendarsUsageDescription key with a string value explaining to the user how the app uses this data.
 This app attempts to access privacy-sensitive data without a usage description. The app's Info.plist must contain an NSPhotoLibraryUsageDescription key with a string value explaining to the user how the app uses this data.
