@@ -1,4 +1,7 @@
-# <center>iOS设计编码规范</center>
+
+title: iOS设计编码规范
+date: 2016-07-25 9:50:12
+tags: [iOS,博客]
 
 ### 1, iOS 常用系统控件
 
