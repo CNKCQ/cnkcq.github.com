@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Hexo, NexT"
+keywords: "CNKCQ, yeah"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -278,7 +278,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night bright
 
 
 # ---------------------------------------------------------------
@@ -492,10 +492,12 @@ use_motion: true
 fancybox: true
 
 # Canvas-nest
-canvas_nest: false
+# canvas_nest: false
+canvas_nest: true
 
 # three_waves
-three_waves: false
+# three_waves: false
+three_waves: true
 
 # canvas_lines
 canvas_lines: false
