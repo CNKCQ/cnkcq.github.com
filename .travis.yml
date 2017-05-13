@@ -1,0 +1,21 @@
+language: node_js
+node_js: stable
+install:
+- npm install
+- npm install -S hexo-generator-json-content
+script:
+- hexo g
+after_script:
+- cd ./public
+- git init
+- git config user.name "${USER_NAME}"
+- git config user.email "${EMAIL}"
+- git add .
+- git commit -m "Update docs"
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+branches:
+  only:
+  - blog_source
+env:
+  global:
+  - secure: YDihlqSNuQoV4cUH+64jqaAvbeu7AvhtVmXyZ2IZZ/7bSPJUOP0ob92tU/n4ha/5Fbp+S/r8d1soIYgjD8Af6hqbKcNbgCN0lvp4AvlP9A5zAyklm91CmLWAhOU1icFP+K0xGNMxvdwSZq/EJzdCSNpbVLsU2xppTbVfb70Kk0o4Q6/2/hKywLQSyOFJ/+lmKgWMQdh12wYpPD/UJw3k++w1BC1r+ORm8CIbqTS36K7ZouDzuk8Je0Ig7VmyhKnC6yWTsyw/DozG586DeLPVgHpsc8Uh96UNjIvTr5RRazAnORMEiFIn9GYSurzHcNHGnQ+ipyl+D7MDr2bhERlkWeUsUBD81cu0uN+FVHlnH1Z7yrtt4ZeVyFBzZIwvP9yLp4RZXMOS7FnVsIZTHewJBGg0Ym1FfzHhttmAMX/IEKIkTiZWTDFCGgSGsIjTgX3JgZStBCAwWMUBi+JWZQBL/RMJK2sW+1KSfO28RrGdjgfc/tXfUf75qBfs5WXJKt5Fg8FeYh3pz2Y1e3CZsH7+HC5h73/6uKsLYosQaKYkOss9dp/163uhdT8aZxcvKx7BqZrsRyNd2JGRM3wPDr8u/A7D6HaQyUa4KHjEOX+aOfjH1laAVW+D3t1rRFnHhfqDHCbL+OFgUgBbGYF/emOZfp6vq24Sn3atyAmJJikyazQ=
