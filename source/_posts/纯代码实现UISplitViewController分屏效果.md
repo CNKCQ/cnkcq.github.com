@@ -3,7 +3,6 @@ date: 2016-05-20 9:48:13
 tags: [iOS,Swift,UISplitViewController,分屏]
 ---
 
-##
 
 ### 一、应用场景
   UISplitViewController 是 iphone 6s plus,ipad系列常用的控件 在iOS8以上的iPhone中得到支持（ In iOS 8 and later）一个典型的场景：iPhone 6s plus 内置的设置APP; 根据苹果设计指南，UISplitViewController一般作为更控制器来使用即rootViewController（. Split view controllers are normally installed at the root of your app’s window），不能作为navigationController的子控制器。
