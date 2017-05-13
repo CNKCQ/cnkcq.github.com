@@ -8,7 +8,7 @@ Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [docume
 ### Create a new post
 
 ``` bash
-$ hexo new "感觉坑好多呀"
+$ hexo new "我想换个电脑试一下，感觉如何"
 ```
 
 More info: [Writing](https://hexo.io/docs/writing.html)
