@@ -1,4 +1,7 @@
-iOS10上传AppStore所遇到的坑
+title: iOS10上传AppStore所遇到的坑
+date: 2016-09-25 9:58:12
+tags: [iOS,博客]
+
 
 苹果的反馈邮件：
 Dear developer,
