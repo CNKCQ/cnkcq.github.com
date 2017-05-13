@@ -307,7 +307,7 @@ han: false
 # Disqus
 disqus:
   enable: true
-  shortname: CNKCQ
+  shortname: https-cnkcq-github-io
   count: true
 
 # Hypercomments
