@@ -1,0 +1,18 @@
+language: node_js
+node_js: stable
+install:
+- npm install
+- npm install -S hexo-generator-json-content
+script:
+- hexo g
+after_script:
+- cd ./public
+- git init
+- git config user.name "${USER_NAME}"
+- git config user.email "${EMAIL}"
+- git add .
+- git commit -m "Update docs"
+- git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+branches:
+  only:
+  - blog_source
