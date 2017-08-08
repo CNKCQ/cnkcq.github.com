@@ -1,4 +1,4 @@
-title: 动手创建是有 CocoaPods
+title: 动手创建私有 CocoaPods
 date: 2017-06-10 8:08:12
 tags: [iOS,App, Update]
 ---
