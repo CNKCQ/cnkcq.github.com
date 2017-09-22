@@ -1,0 +1,822 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,Swift," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CNKCQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言   iOS Simulator 是 iOS 开发过程中不可或缺的一部分，我平时工作中也有很大一部分时间在使用 iOS Simulator， 相比于 Android ，iOS Simulator 具有启动时间快，运行效率高等显著的特点。 因此，用好 iOS Simulator 对于提高我们的开发效率是有很大帮助的. Xcode 9 中，有一大堆新特新等你来撩！！">
+<meta name="keywords" content="iOS,Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode 9 —进阶的 iOS Simulator">
+<meta property="og:url" content="http://cnkcq.github.io/2017/08/15/Xcode 9 —进阶的 iOS Simulator/index.html">
+<meta property="og:site_name" content="CNKCQ">
+<meta property="og:description" content="前言   iOS Simulator 是 iOS 开发过程中不可或缺的一部分，我平时工作中也有很大一部分时间在使用 iOS Simulator， 相比于 Android ，iOS Simulator 具有启动时间快，运行效率高等显著的特点。 因此，用好 iOS Simulator 对于提高我们的开发效率是有很大帮助的. Xcode 9 中，有一大堆新特新等你来撩！！">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://thumbs.gfycat.com/SlimyGrouchyGoldenmantledgroundsquirrel-size_restricted.gif">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/121208-cc84bf762415541a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://thumbs.gfycat.com/FortunateCrazyKiwi-size_restricted.gif">
+<meta property="og:image" content="https://thumbs.gfycat.com/InconsequentialGreatInsect-size_restricted.gif">
+<meta property="og:image" content="https://thumbs.gfycat.com/GrandPiercingCreature-size_restricted.gif">
+<meta property="og:image" content="https://thumbs.gfycat.com/FondIndelibleCaudata-size_restricted.gif">
+<meta property="og:image" content="https://thumbs.gfycat.com/LimpApprehensiveIguana-size_restricted.gif">
+<meta property="og:image" content="https://thumbs.gfycat.com/QuickBoldGalago-size_restricted.gif">
+<meta property="og:updated_time" content="2017-09-22T08:01:40.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xcode 9 —进阶的 iOS Simulator">
+<meta name="twitter:description" content="前言   iOS Simulator 是 iOS 开发过程中不可或缺的一部分，我平时工作中也有很大一部分时间在使用 iOS Simulator， 相比于 Android ，iOS Simulator 具有启动时间快，运行效率高等显著的特点。 因此，用好 iOS Simulator 对于提高我们的开发效率是有很大帮助的. Xcode 9 中，有一大堆新特新等你来撩！！">
+<meta name="twitter:image" content="https://thumbs.gfycat.com/SlimyGrouchyGoldenmantledgroundsquirrel-size_restricted.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cnkcq.github.io/2017/08/15/Xcode 9 —进阶的 iOS Simulator/"/>
+
+
+
+
+
+  <title>Xcode 9 —进阶的 iOS Simulator | CNKCQ</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CNKCQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://cnkcq.github.io/2017/08/15/Xcode 9 —进阶的 iOS Simulator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CNKCQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CNKCQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Xcode 9 —进阶的 iOS Simulator</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T01:05:13+00:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/15/Xcode 9 —进阶的 iOS Simulator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/15/Xcode 9 —进阶的 iOS Simulator/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>   iOS Simulator 是 iOS 开发过程中不可或缺的一部分，我平时工作中也有很大一部分时间在使用 iOS Simulator， 相比于 Android ，iOS Simulator 具有启动时间快，运行效率高等显著的特点。 因此，用好 iOS Simulator 对于提高我们的开发效率是有很大帮助的. Xcode 9 中，有一大堆新特新等你来撩！！</p>
+<a id="more"></a>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>1、 在 Xcode 的全屏模式下使用 Simulator</p>
+<p>    如果你用的是 13 寸的电脑，那么 Xcode 的全屏模式你应该早已习惯，其实即使是配有显示器，我还是习惯在 Xcode 的全屏模式下开发😎。很可惜的是不能在 Xcode 的全屏模式下使用 Simulator, 自 Xcode 9b3 以后，这个问题便不存在了：</p>
+<p><img src="https://thumbs.gfycat.com/SlimyGrouchyGoldenmantledgroundsquirrel-size_restricted.gif" alt=""></p>
+<p>这个功能并不是对所有人默认开放的，如果不幸你的 Xcode 没有默认开启这个功能也不要灰心，我们可以通过打开 Apple Internal menu 来启用这个功能，通过 Apple Internal menu  你能挖掘出 Simulator 的更多新特性。那么问题来了，怎么开启  Apple Internal menu 呢？首先，在更目录里创建 AppleInternal 文件夹，然后重启 Simulator:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/121208-cc84bf762415541a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="internal-menu.png"></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd ~/</div><div class="line">sudo mkdir /AppleInternal</div></pre></td></tr></table></figure>
+<p>重启 Simulator 后就可以看到 internal 选项 ☝️<br>再次重申，你需要下载 Xcode 9b3 或更新的版本才行</p>
+<p>2、同时打开多个模拟器</p>
+<p>还记以前我们在不同尺寸的手机上去适配吗？通常情况下，我们通过 Storyboard 可以直观的看到 View 在不同尺寸设备上的形态，然而纯 Code 码出的界面就得多次启动不同的模拟器来进行可视化调试了。作为开发者，你肯定也想过，要是能同时启动多个模拟器多好，那么很高兴的告诉你，在 Xcode 9 中这已不再是问题了。</p>
+<p><img src="https://thumbs.gfycat.com/FortunateCrazyKiwi-size_restricted.gif" alt=""></p>
+<p>3、拖动放大或缩小 Simulator</p>
+<p>在 Xcode 9 之前， 我们需要通过 command + 1、2、3、4 来对 Simulator 的大小进行调整，Xcode 9 以后就不用这么麻烦，我们可以通过拖拽来控制模拟器的大小了。如果您有多个模拟器打开，这是非常有用的一些细节，它可以帮助你有效地组织工作空间。</p>
+<p><img src="https://thumbs.gfycat.com/InconsequentialGreatInsect-size_restricted.gif" alt=""></p>
+<p>4、Simulator 屏幕捕捉</p>
+<p>在 Apple 官方的 “What’s new”  Xcode 9 文档中，苹果声称现在可以录制模拟器屏幕的视频。 其实这并不新鲜，即使在旧版本中我们也可以通过 simctl 实现这样的功能。 您可以从界面启用视频录制（除了iOS 11中的内置屏幕录制）。</p>
+<p><img src="https://thumbs.gfycat.com/GrandPiercingCreature-size_restricted.gif" alt=""></p>
+<p>执行 command 的命令，就可以得到我们想要录制的视频了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcrun simctl io booted recordVideo --type=mp4 &lt;PATH TO VIDEO FILE&gt;</div></pre></td></tr></table></figure>
+<p>booted —— 即是 simctl 当前选中的模拟器，如果当前有多个模拟器，那么选中的活动的 Simulator 为准。</p>
+<p>5、Finder 和 Simulator 共享文件</p>
+<p>现在，Simulator 具有 Finder 扩展，我们可以直接从 Finder 窗口共享文件给 Simulator 。</p>
+<p><img src="https://thumbs.gfycat.com/FondIndelibleCaudata-size_restricted.gif" alt=""></p>
+<p>当然，如果你使用的是旧版本的 Xcode ，我们也可以使用 simctl 命令来进行类似操作：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcrun simctl addmedia booted &lt;PATH TO MEDIA FILE&gt;</div></pre></td></tr></table></figure>
+<p>这个功能太棒了，毕竟，我更喜欢通过拖拽来实现 Simulator 和 Finder 的文件共享。</p>
+<p>6、 通过 Simulator 打开 URLs<br>通过 simctl 也可以实现 Simulator 打开 URLs， 所以你也可以在旧的模拟器上打开自定义的 URL。</p>
+<p><img src="https://thumbs.gfycat.com/LimpApprehensiveIguana-size_restricted.gif" alt=""></p>
+<p>执行下面的 shell 命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcrun simctl openurl booted &lt;URL&gt;</div></pre></td></tr></table></figure>
+<p>Apple 官方文档 <a href="https://developer.apple.com/library/content/featuredarticles/iPhoneURLScheme_Reference/Introduction/Introduction.html" target="_blank" rel="external">check out the documentation</a></p>
+<p>7、快速打开 app 的文件系统</p>
+<p>通过 simctl 你只需要简单的执行下面一句命令，你就能获取 app 的文件系统，但是，你得知道 bundle identifier：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcrun simctl get_app_container booted &lt;APPS BUNDLE ID&gt;</div></pre></td></tr></table></figure>
+<p>或者您可以通过 open 命令在 Finder 中快速打开目标文件夹：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">open `xcrun simctl get_app_container booted &lt;APPS BUNDLE ID&gt;` -a Finder</div></pre></td></tr></table></figure>
+<p>8、通过 Command 打开 Simulator 中的 APP<br>有了 simctl ，你可以通过 Command 启动 Simulator 中的 app, 或者做一些环境变量的控制，这在自动化测试中是非常重要的。</p>
+<p><img src="https://thumbs.gfycat.com/QuickBoldGalago-size_restricted.gif" alt=""></p>
+<p>你只要使用一下命令即可实现：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcrun simctl launch --console booted &lt;BUNDLE ID&gt; &lt;YOUR ARGUMENTS&gt;</div></pre></td></tr></table></figure>
+<p>9、 通过 Bundle ID 获取 app 的 info 信息</p>
+<p>有时候，我们想获得 app 的 更多的信息，可以通过 simctl appinfo 获得以下格式的信息：</p>
+<figure class="highlight plist"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   ApplicationType = User;</div><div class="line">   Bundle = <span class="tag">&lt;<span class="name">PATH</span> <span class="attr">TO</span> <span class="attr">APP</span> <span class="attr">FILE</span>&gt;</span>;</div><div class="line">   BundleContainer = <span class="tag">&lt;<span class="name">PATH</span> <span class="attr">TO</span> <span class="attr">FOLDER</span> <span class="attr">WITH</span> <span class="attr">APP</span> <span class="attr">FILE</span>&gt;</span>;</div><div class="line">   CFBundleDisplayName = TestiOSApp;</div><div class="line">   CFBundleExecutable = TestiOSApp;</div><div class="line">   CFBundleIdentifier = "com.ahmed.app.TestiOSApp";</div><div class="line">   CFBundleName = TestiOSApp;</div><div class="line">   CFBundleVersion = 1;</div><div class="line">   DataContainer = <span class="tag">&lt;<span class="name">PATH</span> <span class="attr">TO</span> <span class="attr">YOUR</span> <span class="attr">DATA</span>&gt;</span>;</div><div class="line">   GroupContainers =     &#123;</div><div class="line">   &#125;;</div><div class="line">   Path = <span class="tag">&lt;<span class="name">PATH</span> <span class="attr">TO</span> <span class="attr">APP</span> <span class="attr">FILE</span>&gt;</span>;</div><div class="line">   SBAppTags =     (</div><div class="line">   );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>执行以下命令你就能获取以上格式的信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xcrun simctl appinfo booted &lt;BUNDLE ID&gt;</div></pre></td></tr></table></figure>
+<p>最后……</p>
+<p>iOS Simulator 功能强大，是我们开发中必备的神器，当你掌握了它的相关细节以及使用技巧可以极大的提高你的开发效率。当然，作为一个有追求的 iOS 工程师，你更应该去挖掘它那些鲜为人知的功能，然后记得要告诉我哟😊！</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.appcoda.com/ios-simulator-tips-tricks/" target="_blank" rel="external">iOS Simulator on Steroids: Tips &amp; Tricks in Xcode 9</a></p>
+<p>水平有限，如有疏漏，望指正<br>欢迎交流，欢迎 star  <a href="https://github.com/CNKCQ" target="_blank" rel="external">github</a><br>遗人🌹，手有余香</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/WechatPay.png" alt="CNKCQ WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/AliPay.png" alt="CNKCQ Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/13/UIKit 扩展系列之 UIView/" rel="next" title="UIKit 扩展系列之 UIView">
+                <i class="fa fa-chevron-left"></i> UIKit 扩展系列之 UIView
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/01/iOS 11 ——迟来的 NFC/" rel="prev" title="iOS 11 ——迟来的 NFC">
+                iOS 11 ——迟来的 NFC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="CNKCQ" />
+          <p class="site-author-name" itemprop="name">CNKCQ</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CNKCQ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://https-cnkcq-github-io.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://cnkcq.github.io/2017/08/15/Xcode 9 —进阶的 iOS Simulator/';
+          this.page.identifier = '2017/08/15/Xcode 9 —进阶的 iOS Simulator/';
+          this.page.title = 'Xcode 9 —进阶的 iOS Simulator';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-cnkcq-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

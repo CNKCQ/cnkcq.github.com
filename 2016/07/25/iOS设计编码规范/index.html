@@ -1,0 +1,996 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,博客," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CNKCQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="1, iOS 常用系统控件1.0.1 Status Bar 状态栏状态栏的信息内容有两种不同的风格：暗色（黑）和亮色（白）: 1.0.2 Navigation Bar 导航栏导航栏总在屏幕的顶部，状态栏的正下方。默认的，导航栏背景会进行轻微半透明处理，以及对下面的内容进行毛玻璃般的模糊处理:">
+<meta name="keywords" content="iOS,博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS设计编码规范">
+<meta property="og:url" content="http://cnkcq.github.io/2016/07/25/iOS设计编码规范/index.html">
+<meta property="og:site_name" content="CNKCQ">
+<meta property="og:description" content="1, iOS 常用系统控件1.0.1 Status Bar 状态栏状态栏的信息内容有两种不同的风格：暗色（黑）和亮色（白）: 1.0.2 Navigation Bar 导航栏导航栏总在屏幕的顶部，状态栏的正下方。默认的，导航栏背景会进行轻微半透明处理，以及对下面的内容进行毛玻璃般的模糊处理:">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.ui.cn/data/file/2/8/3/138382.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/3/8/3/138383.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/3/9/3/138393.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/4/9/3/138394.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/3/0/4/138403.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/5/0/4/138405.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/6/0/4/138406.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/9/0/4/138409.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/7/1/4/138417.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/5/1/4/138415.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/6/3/4/138436.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/8/8/3/138388.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/0/9/3/138390.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/8/1/4/138418.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/4/2/4/138424.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/9/2/4/138429.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/3/3/4/138433.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="http://img.ui.cn/data/file/5/3/4/138435.jpg?imageView2/2/w/900/q/90">
+<meta property="og:image" content="https://designcode.io/cloud/chapter1/Design-Picker.jpg">
+<meta property="og:image" content="https://designcode.io/cloud/chapter1/Design-Share.jpg">
+<meta property="og:image" content="https://designcode.io/cloud/chapter1/Design-CollectionView.jpg">
+<meta property="og:image" content="https://designcode.io/cloud/chapter1/Design-Toolbar.jpg">
+<meta property="og:image" content="https://designcode.io/cloud/chapter1/iOS-Icons.jpg">
+<meta property="og:image" content="https://cloud.githubusercontent.com/assets/8440220/18087618/b4d2e3c8-6ee8-11e6-8b9b-c0ad049e3736.png">
+<meta property="og:image" content="https://designcode.io/cloud/chapter1/Colors.jpg">
+<meta property="og:updated_time" content="2017-09-22T08:01:40.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS设计编码规范">
+<meta name="twitter:description" content="1, iOS 常用系统控件1.0.1 Status Bar 状态栏状态栏的信息内容有两种不同的风格：暗色（黑）和亮色（白）: 1.0.2 Navigation Bar 导航栏导航栏总在屏幕的顶部，状态栏的正下方。默认的，导航栏背景会进行轻微半透明处理，以及对下面的内容进行毛玻璃般的模糊处理:">
+<meta name="twitter:image" content="http://img.ui.cn/data/file/2/8/3/138382.jpg?imageView2/2/w/900/q/90">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cnkcq.github.io/2016/07/25/iOS设计编码规范/"/>
+
+
+
+
+
+  <title>iOS设计编码规范 | CNKCQ</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CNKCQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://cnkcq.github.io/2016/07/25/iOS设计编码规范/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CNKCQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CNKCQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">iOS设计编码规范</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-25T09:50:12+00:00">
+                2016-07-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/25/iOS设计编码规范/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/07/25/iOS设计编码规范/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-iOS-常用系统控件"><a href="#1-iOS-常用系统控件" class="headerlink" title="1, iOS 常用系统控件"></a>1, iOS 常用系统控件</h3><p></p><p>1.0.1 Status Bar 状态栏</p><br>状态栏的信息内容有两种不同的风格：暗色（黑）和亮色（白）:<br><img src="http://img.ui.cn/data/file/2/8/3/138382.jpg?imageView2/2/w/900/q/90" alt=""><br><p></p>
+<h4 id="1-0-2-Navigation-Bar-导航栏"><a href="#1-0-2-Navigation-Bar-导航栏" class="headerlink" title="1.0.2 Navigation Bar 导航栏"></a>1.0.2 Navigation Bar 导航栏</h4><p>导航栏总在屏幕的顶部，状态栏的正下方。默认的，导航栏背景会进行轻微半透明处理，以及对下面的内容进行毛玻璃般的模糊处理:<br><img src="http://img.ui.cn/data/file/3/8/3/138383.jpg?imageView2/2/w/900/q/90" alt=""><br><br> <a id="more"></a></p>
+<h6 id="1-0-3-Tab-Bar-标签栏"><a href="#1-0-3-Tab-Bar-标签栏" class="headerlink" title="1.0.3 Tab Bar 标签栏"></a>1.0.3 Tab Bar 标签栏</h6><p>标签栏在屏幕底部。默认情况下背景使用和导航栏一样的轻微半透明效果，以及使用和系统一样的模糊处理下面遮住的内容。:<br><img src="http://img.ui.cn/data/file/3/9/3/138393.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h6 id="1-0-4-Table-View-表格视图"><a href="#1-0-4-Table-View-表格视图" class="headerlink" title="1.0.4 Table View 表格视图"></a>1.0.4 Table View 表格视图</h6><p>表格视图用于呈现大多数列表风格的信息，可以一列或者多列，也可以选择几行来划分信息或分组。<br>纯表格:<br><img src="http://img.ui.cn/data/file/4/9/3/138394.jpg?imageView2/2/w/900/q/90" alt=""><br><br>分组表格(头部和尾部字体：13pt):<br><img src="http://img.ui.cn/data/file/3/0/4/138403.jpg?imageView2/2/w/900/q/90" alt=""><br><br>默认:<br><img src="http://img.ui.cn/data/file/5/0/4/138405.jpg?imageView2/2/w/900/q/90" alt=""><br><br>系统自带cell 默认中高度 44pt <br><br>带副标题:<br><img src="http://img.ui.cn/data/file/6/0/4/138406.jpg?imageView2/2/w/900/q/90" alt=""><br><br>带数值:<br><img src="http://img.ui.cn/data/file/9/0/4/138409.jpg?imageView2/2/w/900/q/90" alt=""><br><br>表格视图每一行cell选中自带高亮</p>
+<h4 id="1-0-5-Alerts-警告提醒"><a href="#1-0-5-Alerts-警告提醒" class="headerlink" title="1.0.5 Alerts 警告提醒"></a>1.0.5 Alerts 警告提醒</h4><p>警告提醒用于通知用户关键信息，以及可以强制用户做出一些动作选择。<br>警告视图总包含一个标题文本，可以不限于一行（对于纯信息警告如“OK”），以及不限一个或两个按钮（请求式的决定，如“发送”和“取消”）。:<br><img src="http://img.ui.cn/data/file/7/1/4/138417.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-0-6-Actions-Sheets-动作菜单"><a href="#1-0-6-Actions-Sheets-动作菜单" class="headerlink" title="1.0.6 Actions Sheets 动作菜单"></a>1.0.6 Actions Sheets 动作菜单</h4><p>用于从可执行的动作中选择执行一个动作，要求App用户选择一个动作继续，或者取消。:<br><img src="http://img.ui.cn/data/file/5/1/4/138415.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-0-7-Switch-开关"><a href="#1-0-7-Switch-开关" class="headerlink" title="1.0.7 Switch 开关"></a>1.0.7 Switch 开关</h4><p>用于从可执行的动作中选择执行一个动作，要求App用户选择一个动作继续，或者取消。:<br><img src="http://img.ui.cn/data/file/6/3/4/138436.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-0-8-Search-Bar-搜索栏"><a href="#1-0-8-Search-Bar-搜索栏" class="headerlink" title="1.0.8 Search Bar 搜索栏"></a>1.0.8 Search Bar 搜索栏</h4><p>搜索栏默认有两种风格：凸显（Prominent）和最小（Minimal）风格。两种风格的功能都相同。:<br>（无提示栏、有提示栏）<br><img src="http://img.ui.cn/data/file/8/8/3/138388.jpg?imageView2/2/w/900/q/90" alt=""><br><br>（最小风格的搜索栏）<br><img src="http://img.ui.cn/data/file/0/9/3/138390.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-0-9-Edit-menu-编辑菜单"><a href="#1-0-9-Edit-menu-编辑菜单" class="headerlink" title="1.0.9 Edit menu 编辑菜单"></a>1.0.9 Edit menu 编辑菜单</h4><p>在一个元素被选定时(文本，图片及其他)，编辑菜单允许用户执行复制、粘贴、剪切等操作:<br><img src="http://img.ui.cn/data/file/8/1/4/138418.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-1-1-Edit-menu-浮动窗"><a href="#1-1-1-Edit-menu-浮动窗" class="headerlink" title="1.1.1 Edit menu 浮动窗"></a>1.1.1 Edit menu 浮动窗</h4><p>当要求用户在程序进行的同时输入多个信息时，浮动框（Popover）是个绝佳选择:<br><img src="http://img.ui.cn/data/file/4/2/4/138424.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-1-2-Segment-Controls-分段控件"><a href="#1-1-2-Segment-Controls-分段控件" class="headerlink" title="1.1.2 Segment Controls 分段控件"></a>1.1.2 Segment Controls 分段控件</h4><p>分段控件包含一系列分段（至少两个），可以用于筛选内容或为整理的分类内容创建标签:<br><img src="http://img.ui.cn/data/file/9/2/4/138429.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-1-3-Sliders-滑块"><a href="#1-1-3-Sliders-滑块" class="headerlink" title="1.1.3 Sliders 滑块"></a>1.1.3 Sliders 滑块</h4><p>滑块控件可以让用户从一个允许范围内滑动滑块选择一个特定的值:<br><img src="http://img.ui.cn/data/file/3/3/4/138433.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-1-4-Stepper-进步器"><a href="#1-1-4-Stepper-进步器" class="headerlink" title="1.1.4 Stepper 进步器"></a>1.1.4 Stepper 进步器</h4><p>一个步进器需要包含两个分段按钮，一个用于减少当前值，一个用于增加。:<br><img src="http://img.ui.cn/data/file/5/3/4/138435.jpg?imageView2/2/w/900/q/90" alt=""><br></p>
+<h4 id="1-1-5-Picker-选择器"><a href="#1-1-5-Picker-选择器" class="headerlink" title="1.1.5 Picker 选择器"></a>1.1.5 Picker 选择器</h4><p>选择器通常用作级联表达，常见的时间选择器:<br><img src="https://designcode.io/cloud/chapter1/Design-Picker.jpg" alt=""><br></p>
+<h4 id="1-1-6-Activity-dialog-活动对话框"><a href="#1-1-6-Activity-dialog-活动对话框" class="headerlink" title="1.1.6 Activity dialog  活动对话框"></a>1.1.6 Activity dialog  活动对话框</h4><p>活动对话框用于内容（text, images, links）分享:<br><img src="https://designcode.io/cloud/chapter1/Design-Share.jpg" alt=""><br></p>
+<h4 id="1-1-7-Collection-View-网格视图"><a href="#1-1-7-Collection-View-网格视图" class="headerlink" title="1.1.7 Collection View 网格视图"></a>1.1.7 Collection View 网格视图</h4><p>通常用于网格布局（九宫格，瀑布流）:<br><img src="https://designcode.io/cloud/chapter1/Design-CollectionView.jpg" alt=""><br><br>Collection默认选中没有高亮</p>
+<h4 id="1-1-8-Toolbar-工具栏"><a href="#1-1-8-Toolbar-工具栏" class="headerlink" title="1.1.8 Toolbar 工具栏"></a>1.1.8 Toolbar 工具栏</h4><p>当遇到多种操作可以考虑使用工具栏:<br><img src="https://designcode.io/cloud/chapter1/Design-Toolbar.jpg" alt=""><br></p>
+<h4 id="1-0-8-System-icons-系统icon"><a href="#1-0-8-System-icons-系统icon" class="headerlink" title="1.0.8 System icons 系统icon"></a>1.0.8 System icons 系统icon</h4><p>系统图标往往有特定的意向表达，被用户熟知，适当的应用系统图标会降低app的使用难度,  提高用户体验:<br><img src="https://designcode.io/cloud/chapter1/iOS-Icons.jpg" alt=""><br></p>
+<h3 id="2-iOS-常用配色方案"><a href="#2-iOS-常用配色方案" class="headerlink" title="2, iOS 常用配色方案"></a>2, iOS 常用配色方案</h3><h4 id="2-0-1-iOS-系统默认颜色"><a href="#2-0-1-iOS-系统默认颜色" class="headerlink" title="2.0.1 iOS 系统默认颜色"></a>2.0.1 iOS 系统默认颜色</h4><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>hex</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>groupTableViewBackgroundColor</td>
+<td>#EFEFF4</td>
+</tr>
+<tr>
+<td>lightTextColor</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>darkTextColor</td>
+<td>#000000</td>
+</tr>
+<tr>
+<td>blackColor</td>
+<td>#000000</td>
+</tr>
+<tr>
+<td>darkGrayColor</td>
+<td>#555555</td>
+</tr>
+<tr>
+<td>lightGrayColor</td>
+<td>#AAAAAA</td>
+</tr>
+<tr>
+<td>grayColor</td>
+<td>#7F7F7F</td>
+</tr>
+<tr>
+<td>whiteColor</td>
+<td>#FFFFFF</td>
+</tr>
+<tr>
+<td>redColor</td>
+<td>#FF0000</td>
+</tr>
+<tr>
+<td>greenColor</td>
+<td>#00FF00</td>
+</tr>
+<tr>
+<td>blueColor</td>
+<td>#0000FF</td>
+</tr>
+<tr>
+<td>cyanColor</td>
+<td>#00FFFF</td>
+</tr>
+<tr>
+<td>yellowColor</td>
+<td>#FFFF00</td>
+</tr>
+<tr>
+<td>magentaColor</td>
+<td>#FF00FF</td>
+</tr>
+<tr>
+<td>orangeColor</td>
+<td>#FF7F00</td>
+</tr>
+<tr>
+<td>purpleColor</td>
+<td>#7F007F</td>
+</tr>
+<tr>
+<td>brownColor</td>
+<td>#996633</td>
+</tr>
+<tr>
+<td>clearColor</td>
+<td>#000000</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-0-2-iOS-苹果官方设计指南推荐常用颜色"><a href="#2-0-2-iOS-苹果官方设计指南推荐常用颜色" class="headerlink" title="2.0.2 iOS 苹果官方设计指南推荐常用颜色"></a>2.0.2 iOS 苹果官方设计指南推荐常用颜色</h4><p><img src="https://cloud.githubusercontent.com/assets/8440220/18087618/b4d2e3c8-6ee8-11e6-8b9b-c0ad049e3736.png" alt=""><br></p>
+<h4 id="2-0-3-iOS-推荐配色"><a href="#2-0-3-iOS-推荐配色" class="headerlink" title="2.0.3 iOS 推荐配色"></a>2.0.3 iOS 推荐配色</h4><p><img src="https://designcode.io/cloud/chapter1/Colors.jpg" alt=""><br></p>
+<h3 id="3-iOS-常用系统字体"><a href="#3-iOS-常用系统字体" class="headerlink" title="3, iOS 常用系统字体"></a>3, iOS 常用系统字体</h3><table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Size(pt)</th>
+<th>Weight</th>
+<th>Spacing(pt)</th>
+<th>Type      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>systemFont</td>
+<td>14</td>
+<td>default</td>
+<td>default</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>smallSystemFont</td>
+<td>12</td>
+<td>default</td>
+<td>default</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>buttonFont</td>
+<td>18</td>
+<td>default</td>
+<td>default</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>labelFont</td>
+<td>17</td>
+<td>default</td>
+<td>default</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Nav Bar Title</td>
+<td>17</td>
+<td>Medium</td>
+<td>0.5</td>
+<td>Display</td>
+</tr>
+<tr>
+<td>Nav Bar Button</td>
+<td>17</td>
+<td>Regular</td>
+<td>0.5</td>
+<td>Display</td>
+</tr>
+<tr>
+<td>Search Bar</td>
+<td>13.5</td>
+<td>Regular</td>
+<td>0</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Tab Bar Button</td>
+<td>10</td>
+<td>Regular</td>
+<td>0.1</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Table Header</td>
+<td>12.5</td>
+<td>Regular</td>
+<td>0.25</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Table Row</td>
+<td>16.5</td>
+<td>Regular</td>
+<td>0</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Table Row Subtitle</td>
+<td>12</td>
+<td>Regular</td>
+<td>0</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Table Footer</td>
+<td>12.5</td>
+<td>Regular</td>
+<td>0.2</td>
+<td>Text</td>
+</tr>
+<tr>
+<td>Action Sheets</td>
+<td>20</td>
+<td>Regular / Medium</td>
+<td>0.5</td>
+<td>Display</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://developer.apple.com/ios/human-interface-guidelines" target="_blank" rel="external">https://developer.apple.com/ios/human-interface-guidelines</a> iOS官方设计指南 <br><br><a href="http://www.ui.cn/detail/32167.html" target="_blank" rel="external">http://www.ui.cn/detail/32167.html</a> 中文 <br><br><a href="http://ivomynttinen.com/blog/ios-design-guidelines" target="_blank" rel="external">http://ivomynttinen.com/blog/ios-design-guidelines</a> 英文 <br><br><a href="http://ms.csdn.net/geek/72062" target="_blank" rel="external">http://ms.csdn.net/geek/72062</a> 全新Apple iOS设计规范指南 <br><br><a href="http://wiki.jikexueyuan.com/project/ios-9-human-computer-interface-guidelines/" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/ios-9-human-computer-interface-guidelines/</a> iOS 9 人机交互指南 <br><br><a href="https://designcode.io/iosdesign-guidelines" target="_blank" rel="external">https://designcode.io/iosdesign-guidelines</a> <br></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/WechatPay.png" alt="CNKCQ WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/AliPay.png" alt="CNKCQ Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/博客/" rel="tag"># 博客</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/21/ReactNative实现跨平台开发/" rel="next" title="Write once Run on iOS/Android">
+                <i class="fa fa-chevron-left"></i> Write once Run on iOS/Android
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/20/RxSwift项目实战/" rel="prev" title="RxSwift -- 项目实战">
+                RxSwift -- 项目实战 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="CNKCQ" />
+          <p class="site-author-name" itemprop="name">CNKCQ</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-iOS-常用系统控件"><span class="nav-number">1.</span> <span class="nav-text">1, iOS 常用系统控件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-2-Navigation-Bar-导航栏"><span class="nav-number">1.1.</span> <span class="nav-text">1.0.2 Navigation Bar 导航栏</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-0-3-Tab-Bar-标签栏"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">1.0.3 Tab Bar 标签栏</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#1-0-4-Table-View-表格视图"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">1.0.4 Table View 表格视图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-5-Alerts-警告提醒"><span class="nav-number">1.2.</span> <span class="nav-text">1.0.5 Alerts 警告提醒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-6-Actions-Sheets-动作菜单"><span class="nav-number">1.3.</span> <span class="nav-text">1.0.6 Actions Sheets 动作菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-7-Switch-开关"><span class="nav-number">1.4.</span> <span class="nav-text">1.0.7 Switch 开关</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-8-Search-Bar-搜索栏"><span class="nav-number">1.5.</span> <span class="nav-text">1.0.8 Search Bar 搜索栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-9-Edit-menu-编辑菜单"><span class="nav-number">1.6.</span> <span class="nav-text">1.0.9 Edit menu 编辑菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-Edit-menu-浮动窗"><span class="nav-number">1.7.</span> <span class="nav-text">1.1.1 Edit menu 浮动窗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-Segment-Controls-分段控件"><span class="nav-number">1.8.</span> <span class="nav-text">1.1.2 Segment Controls 分段控件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-Sliders-滑块"><span class="nav-number">1.9.</span> <span class="nav-text">1.1.3 Sliders 滑块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-4-Stepper-进步器"><span class="nav-number">1.10.</span> <span class="nav-text">1.1.4 Stepper 进步器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-5-Picker-选择器"><span class="nav-number">1.11.</span> <span class="nav-text">1.1.5 Picker 选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-6-Activity-dialog-活动对话框"><span class="nav-number">1.12.</span> <span class="nav-text">1.1.6 Activity dialog  活动对话框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-7-Collection-View-网格视图"><span class="nav-number">1.13.</span> <span class="nav-text">1.1.7 Collection View 网格视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-8-Toolbar-工具栏"><span class="nav-number">1.14.</span> <span class="nav-text">1.1.8 Toolbar 工具栏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-0-8-System-icons-系统icon"><span class="nav-number">1.15.</span> <span class="nav-text">1.0.8 System icons 系统icon</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-iOS-常用配色方案"><span class="nav-number">2.</span> <span class="nav-text">2, iOS 常用配色方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-0-1-iOS-系统默认颜色"><span class="nav-number">2.1.</span> <span class="nav-text">2.0.1 iOS 系统默认颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-0-2-iOS-苹果官方设计指南推荐常用颜色"><span class="nav-number">2.2.</span> <span class="nav-text">2.0.2 iOS 苹果官方设计指南推荐常用颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-0-3-iOS-推荐配色"><span class="nav-number">2.3.</span> <span class="nav-text">2.0.3 iOS 推荐配色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-iOS-常用系统字体"><span class="nav-number">3.</span> <span class="nav-text">3, iOS 常用系统字体</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CNKCQ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://https-cnkcq-github-io.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://cnkcq.github.io/2016/07/25/iOS设计编码规范/';
+          this.page.identifier = '2016/07/25/iOS设计编码规范/';
+          this.page.title = 'iOS设计编码规范';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-cnkcq-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

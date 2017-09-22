@@ -1,0 +1,783 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,Swift," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CNKCQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言  对 iOS 熟悉的同学应该都知道，在开发的过程中，我们经常会创建一些扩展来封装一些常用的代码块以便我们快速开发，我也不例外，在开发的过程中我搜集了一些比较常用的代码片段放在github 仓库里，这里我要讲的是对 UIView 的一些扩展。">
+<meta name="keywords" content="iOS,Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIKit 扩展系列之 UIView">
+<meta property="og:url" content="http://cnkcq.github.io/2017/08/13/UIKit 扩展系列之 UIView/index.html">
+<meta property="og:site_name" content="CNKCQ">
+<meta property="og:description" content="前言  对 iOS 熟悉的同学应该都知道，在开发的过程中，我们经常会创建一些扩展来封装一些常用的代码块以便我们快速开发，我也不例外，在开发的过程中我搜集了一些比较常用的代码片段放在github 仓库里，这里我要讲的是对 UIView 的一些扩展。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/121208-9afc52ee4f74c1e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-09-22T08:01:40.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UIKit 扩展系列之 UIView">
+<meta name="twitter:description" content="前言  对 iOS 熟悉的同学应该都知道，在开发的过程中，我们经常会创建一些扩展来封装一些常用的代码块以便我们快速开发，我也不例外，在开发的过程中我搜集了一些比较常用的代码片段放在github 仓库里，这里我要讲的是对 UIView 的一些扩展。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/121208-9afc52ee4f74c1e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cnkcq.github.io/2017/08/13/UIKit 扩展系列之 UIView/"/>
+
+
+
+
+
+  <title>UIKit 扩展系列之 UIView | CNKCQ</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CNKCQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://cnkcq.github.io/2017/08/13/UIKit 扩展系列之 UIView/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CNKCQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CNKCQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UIKit 扩展系列之 UIView</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-13T02:48:13+00:00">
+                2017-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/13/UIKit 扩展系列之 UIView/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/08/13/UIKit 扩展系列之 UIView/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  对 iOS 熟悉的同学应该都知道，在开发的过程中，我们经常会创建一些扩展来封装一些常用的代码块以便我们快速开发，我也不例外，在开发的过程中我搜集了一些比较常用的代码片段放在github 仓库里，这里我要讲的是对 UIView 的一些扩展。<br>  <a id="more"></a></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><ol>
+<li>flatSubviews<br>  想必大家有过这样的经历吧，有时候，我们需要对系统控件进行更改，当然也可能是对第三方控件进行修改，这个时候我们往往需要去遍历一个视图的所有子视图，当然这个时候大家可能首先会想到使用系统的 subviews 属性，但是，这只能得到当前视图的所有子视图，那么子视图的子视图呢？这里我为 UIView 扩展了一个属性  flatSubviews ，这个属性包含了视图的子视图以及子视图的子视图，其实实现方法并不难，这里主要使用到了迭代模式。下面我们来看看其中的内部实现：</li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// `self`'s all subviews include the subview's subviews.</span></div><div class="line">    <span class="keyword">var</span> flatSubviews: [<span class="type">UIView</span>] &#123;</div><div class="line">        <span class="keyword">var</span> views: [<span class="type">UIView</span>] = []</div><div class="line">        <span class="keyword">self</span>.subviews.forEach &#123; (sub) <span class="keyword">in</span></div><div class="line">            views.append(sub)</div><div class="line">            <span class="keyword">if</span> !sub.subviews.isEmpty &#123;</div><div class="line">                views += sub.flatSubviews</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> views</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>看到这里大家是不是觉得其实很简单呢？☺</p>
+<ol>
+<li>functions<br>(1) 便捷的为 View 添加圆角</li>
+</ol>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">///  When positive, the background of the layer will be drawn with rounded corners. Also effects the mask generated by the`masksToBounds' property. Defaults to true. Animatable.</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">cornerRadius</span><span class="params">(<span class="number">_</span> radius: CGFloat)</span></span> &#123;</div><div class="line">    layer.cornerRadius = radius</div><div class="line">    layer.masksToBounds = <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(2) 快速添加点击手势</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Add tapGesture/action for particular event.</span></div><div class="line"><span class="comment">///</span></div><div class="line"><span class="comment">/// - Parameters:</span></div><div class="line"><span class="comment">///   - tapNumber: Default is 1. The number of taps required to match</span></div><div class="line"><span class="comment">///   - target: `self`</span></div><div class="line"><span class="comment">///   - action: a `Selector`</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addTapGesture</span><span class="params">(<span class="number">_</span> tapNumber: Int = <span class="number">1</span>, target: Any = <span class="keyword">self</span>, action: Selector)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> tap = <span class="type">UITapGestureRecognizer</span>(target: target, action: action)</div><div class="line">    tap.numberOfTapsRequired = tapNumber</div><div class="line">    isUserInteractionEnabled = <span class="literal">true</span></div><div class="line">    addGestureRecognizer(tap)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>(3) 截取视图</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Returns an image of the current view</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">/// - Parameter scale: scale</span></div><div class="line">    <span class="comment">/// - Returns: A new image</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">getSnapshot</span><span class="params">(scale: CGFloat = <span class="number">0</span>)</span></span> -&gt; <span class="type">UIImage</span> &#123;</div><div class="line">        <span class="type">UIGraphicsBeginImageContextWithOptions</span>(bounds.size, <span class="literal">false</span>, scale)</div><div class="line">        drawHierarchy(<span class="keyword">in</span>: bounds, afterScreenUpdates: <span class="literal">true</span>)</div><div class="line">        <span class="keyword">let</span> image = <span class="type">UIGraphicsGetImageFromCurrentImageContext</span>()!</div><div class="line">        <span class="type">UIGraphicsEndImageContext</span>()</div><div class="line">        <span class="keyword">return</span> image</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>(4) 添加边线<br>   为 View 添加边线也是一个高频的需求，我们会经常遇到为 UITextField 或者 自定义的 Cell 添加下边线。通常情况下，我们会想到使用贝塞尔曲线，我开始也是这样用的，后来发现在适配横竖屏的时候比较麻烦，如果你比较好的实现方式，希望你能告诉我。后来还是决定 使用 UIView 自定义 Line ，然后用 AutoLayout 添加约束，这样就完美的适配了横竖屏了。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addBorder</span><span class="params">(<span class="keyword">for</span> edges: [UIRectEdge], width: CGFloat = <span class="number">1</span>, color: UIColor = .black, insets: UIEdgeInsets = UIEdgeInsets<span class="params">(all: <span class="number">0</span>)</span></span></span>) &#123;</div><div class="line">    <span class="keyword">var</span> edgesValues: [<span class="type">UIRectEdge</span>] = edges</div><div class="line">    <span class="keyword">if</span> edges.<span class="built_in">contains</span>(.all) &#123;</div><div class="line">        edgesValues = [.top, .bottom, .<span class="keyword">left</span>, .<span class="keyword">right</span>]</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> allSpecificBorders:[<span class="type">UIRectEdge</span>] = [.top, .bottom, .<span class="keyword">left</span>, .<span class="keyword">right</span>]</div><div class="line">    <span class="keyword">for</span> edge <span class="keyword">in</span> allSpecificBorders &#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> view = viewWithTag(<span class="type">Int</span>(edge.rawValue)) &#123;</div><div class="line">            view.removeFromSuperview()</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> edgesValues.<span class="built_in">contains</span>(edge) &#123;</div><div class="line">            <span class="keyword">let</span> view = <span class="type">UIView</span>()</div><div class="line">            view.tag = <span class="type">Int</span>(edge.rawValue)</div><div class="line">            view.backgroundColor = color</div><div class="line">            view.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></div><div class="line">            addSubview(view)</div><div class="line">            <span class="keyword">var</span> horizontalVisualFormat = <span class="string">"H:"</span></div><div class="line">            <span class="keyword">var</span> verticalVisualFormat = <span class="string">"V:"</span></div><div class="line">            <span class="keyword">switch</span> edge &#123;</div><div class="line">            <span class="keyword">case</span> <span class="type">UIRectEdge</span>.bottom:</div><div class="line">                horizontalVisualFormat += <span class="string">"|-(<span class="subst">\(insets.<span class="keyword">left</span>)</span>)-[v]-(<span class="subst">\(insets.<span class="keyword">right</span>)</span>)-|"</span></div><div class="line">                verticalVisualFormat += <span class="string">"[v(<span class="subst">\(width)</span>)]-(<span class="subst">\(insets.bottom)</span>)-|"</span></div><div class="line">            <span class="keyword">case</span> <span class="type">UIRectEdge</span>.top:</div><div class="line">                horizontalVisualFormat += <span class="string">"|-(<span class="subst">\(insets.<span class="keyword">left</span>)</span>)-[v]-(<span class="subst">\(insets.<span class="keyword">right</span>)</span>)-|"</span></div><div class="line">                verticalVisualFormat += <span class="string">"|-(<span class="subst">\(insets.top)</span>)-[v(<span class="subst">\(width)</span>)]"</span></div><div class="line">            <span class="keyword">case</span> <span class="type">UIRectEdge</span>.<span class="keyword">left</span>:</div><div class="line">                horizontalVisualFormat += <span class="string">"|-(<span class="subst">\(insets.<span class="keyword">left</span>)</span>)-[v(<span class="subst">\(width)</span>)]"</span></div><div class="line">                verticalVisualFormat += <span class="string">"|-(<span class="subst">\(insets.top)</span>)-[v]-(<span class="subst">\(insets.bottom)</span>)-|"</span></div><div class="line">            <span class="keyword">case</span> <span class="type">UIRectEdge</span>.<span class="keyword">right</span>:</div><div class="line">                horizontalVisualFormat += <span class="string">"[v(<span class="subst">\(width)</span>)]-(<span class="subst">\(insets.<span class="keyword">right</span>)</span>)-|"</span></div><div class="line">                verticalVisualFormat += <span class="string">"|-(<span class="subst">\(insets.<span class="keyword">left</span>)</span>)-[v]-(<span class="subst">\(insets.<span class="keyword">right</span>)</span>)-|"</span></div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">break</span></div><div class="line">            &#125;</div><div class="line">            <span class="keyword">self</span>.addConstraints(<span class="type">NSLayoutConstraint</span>.constraints(withVisualFormat: horizontalVisualFormat, options: .directionLeadingToTrailing, metrics: <span class="literal">nil</span>, views: [<span class="string">"v"</span>: view]))</div><div class="line">            <span class="keyword">self</span>.addConstraints(<span class="type">NSLayoutConstraint</span>.constraints(withVisualFormat: verticalVisualFormat, options: .directionLeadingToTrailing, metrics: <span class="literal">nil</span>, views: [<span class="string">"v"</span>: view]))</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用效果：<br><img src="http://upload-images.jianshu.io/upload_images/121208-9afc52ee4f74c1e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="simulator screen shot 2017 8 12 9 20 15"></p>
+<p>UI 扩展，请看    <a href="https://github.com/CNKCQ/UIKit.plus" target="_blank" rel="external">UIKit.plus</a><br>水平有限，如有疏漏，望指正<br>欢迎交流，欢迎 star  <a href="https://github.com/CNKCQ" target="_blank" rel="external">CNKCQ</a><br>遗人🌹，手有余香      <a href="http://wangchenquan.com/" target="_blank" rel="external">blog</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/WechatPay.png" alt="CNKCQ WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/AliPay.png" alt="CNKCQ Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/12/完美适配，您需要知道的 SnapKit/" rel="next" title="完美适配，您需要知道的 SnapKit">
+                <i class="fa fa-chevron-left"></i> 完美适配，您需要知道的 SnapKit
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/15/Xcode 9 —进阶的 iOS Simulator/" rel="prev" title="Xcode 9 —进阶的 iOS Simulator">
+                Xcode 9 —进阶的 iOS Simulator <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="CNKCQ" />
+          <p class="site-author-name" itemprop="name">CNKCQ</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CNKCQ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://https-cnkcq-github-io.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://cnkcq.github.io/2017/08/13/UIKit 扩展系列之 UIView/';
+          this.page.identifier = '2017/08/13/UIKit 扩展系列之 UIView/';
+          this.page.title = 'UIKit 扩展系列之 UIView';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-cnkcq-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

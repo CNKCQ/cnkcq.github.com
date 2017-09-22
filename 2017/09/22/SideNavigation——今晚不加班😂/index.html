@@ -1,0 +1,796 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS,Swift,Menu," />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="CNKCQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言&amp;emsp;&amp;emsp;在 Android app 中，侧边栏的应用是非常普遍的，从 Google 的官方 UI 设计指南中可以看出这种设计对 UI || UED 的引导，不仅如此，Google 自家的应用也对侧边栏进行了广泛的实践，inbox gmail 就是其中之一。因此，你也可能遇到有一天你的 UI || UED  跑过来对你说我们 iOS 也支持一下 “侧边栏” 导航吧。如果你有这个需">
+<meta name="keywords" content="iOS,Swift,Menu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SideNavigation——今晚不加班😂">
+<meta property="og:url" content="http://cnkcq.github.io/2017/09/22/SideNavigation——今晚不加班😂/index.html">
+<meta property="og:site_name" content="CNKCQ">
+<meta property="og:description" content="前言&amp;emsp;&amp;emsp;在 Android app 中，侧边栏的应用是非常普遍的，从 Google 的官方 UI 设计指南中可以看出这种设计对 UI || UED 的引导，不仅如此，Google 自家的应用也对侧边栏进行了广泛的实践，inbox gmail 就是其中之一。因此，你也可能遇到有一天你的 UI || UED  跑过来对你说我们 iOS 也支持一下 “侧边栏” 导航吧。如果你有这个需">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/121208-710ab9f57c187cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/121208-1eaeac71cacb5879.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/121208-730824aa958d22ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+<meta property="og:image" content="https://thumbs.gfycat.com/MagnificentWhichFlyinglemur-size_restricted.gif">
+<meta property="og:updated_time" content="2017-09-22T08:01:40.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SideNavigation——今晚不加班😂">
+<meta name="twitter:description" content="前言&amp;emsp;&amp;emsp;在 Android app 中，侧边栏的应用是非常普遍的，从 Google 的官方 UI 设计指南中可以看出这种设计对 UI || UED 的引导，不仅如此，Google 自家的应用也对侧边栏进行了广泛的实践，inbox gmail 就是其中之一。因此，你也可能遇到有一天你的 UI || UED  跑过来对你说我们 iOS 也支持一下 “侧边栏” 导航吧。如果你有这个需">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/121208-710ab9f57c187cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cnkcq.github.io/2017/09/22/SideNavigation——今晚不加班😂/"/>
+
+
+
+
+
+  <title>SideNavigation——今晚不加班😂 | CNKCQ</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CNKCQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://cnkcq.github.io/2017/09/22/SideNavigation——今晚不加班😂/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CNKCQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CNKCQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SideNavigation——今晚不加班😂</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-22T01:48:13+00:00">
+                2017-09-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/09/22/SideNavigation——今晚不加班😂/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/09/22/SideNavigation——今晚不加班😂/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;&emsp;在 Android app 中，侧边栏的应用是非常普遍的，从 Google 的官方 UI 设计指南中可以看出这种设计对 UI || UED 的引导，不仅如此，Google 自家的应用也对侧边栏进行了广泛的实践，inbox gmail 就是其中之一。因此，你也可能遇到有一天你的 UI || UED  跑过来对你说我们 iOS 也支持一下 “侧边栏” 导航吧。如果你有这个需求又恰好看到这篇文章，那么恭喜你，本来可能需要加班的你可以解放了。<br><a id="more"></a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/121208-710ab9f57c187cb5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="image.png"></p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>&emsp;&emsp;如上图，像这样的效果实现方式很多，我们项目中原来就有实现过，既然实现过，那么为什么还要去实现一遍呢？这就要从我苦逼的 iPad 适配之旅开始讲了，我们的项目是一个 OC + Swift + RN + H5 的一个混合项目，适配起来那个酸爽别提了，侧边是由 OC 写的老旧代码，在 iPad 的横竖屏适配上特别糟糕😰，于是我决定用 Swift 封装一个 SideNavigation 的轮子。为了满足需求这个轮子应该具备以下特点：</p>
+<ol>
+<li>横竖屏适配，满足 iPad 适配需求</li>
+<li>支持 Swift &amp;&amp; OC 满足混编需求</li>
+<li>用户可以通过向右或者向左滑动呼出侧边栏</li>
+<li>用户还可以通过拖拽关闭侧边栏</li>
+</ol>
+<h6 id="接口要简单"><a href="#接口要简单" class="headerlink" title="接口要简单"></a>接口要简单</h6><p>&emsp;&emsp;把复杂留给自己，简单留给他人，好的接口大底应该如此。如：<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="number">_</span> viewController: <span class="type">UIViewController</span>, <span class="keyword">left</span>: <span class="type">UIViewController</span>) </div><div class="line"><span class="keyword">public</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="number">_</span> viewController: <span class="type">UIViewController</span>, <span class="keyword">right</span>: <span class="type">UIViewController</span>)</div></pre></td></tr></table></figure></p>
+<p>由上可知，我们只需要通过初始化一个 SideMenuManager 就能实现你想要的侧边抽屉效果，实在是太方便了😂。</p>
+<h6 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h6><p>&emsp;&emsp;<br>(1)  实现 UIViewControllerTransitioningDelegate<br>&emsp;&emsp; 我们可以通过 UIViewControllerTransitioningDelegate 来实现转场动画：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">presentationController</span><span class="params">(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController)</span></span> -&gt; <span class="type">UIPresentationController</span>? &#123;</div><div class="line">    <span class="keyword">let</span> presentationController = <span class="type">PresentationController</span>(presentedViewController: presented, presenting: presenting)</div><div class="line">    presentationController.delegate = <span class="keyword">self</span></div><div class="line">    presentationController.direction = direction</div><div class="line">    <span class="keyword">self</span>.dismissInteractor = <span class="type">PercentDrivenInteractiveTransition</span>(<span class="keyword">self</span>.presentController, with: presentationController.dimmingView, present: <span class="literal">nil</span>, direction: <span class="keyword">self</span>.direction)</div><div class="line">    <span class="keyword">return</span> presentationController</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">animationController</span><span class="params">(forDismissed dismissed: UIViewController)</span></span> -&gt; <span class="type">UIViewControllerAnimatedTransitioning</span>? &#123;</div><div class="line">    <span class="keyword">let</span> animator = <span class="type">AnimatedTransitioning</span>()</div><div class="line">    animator.direction = direction</div><div class="line">    animator.transitionType = .dismiss</div><div class="line">    <span class="keyword">return</span> animator</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">animationController</span><span class="params">(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController)</span></span> -&gt; <span class="type">UIViewControllerAnimatedTransitioning</span>? &#123;</div><div class="line">    <span class="keyword">let</span> animator = <span class="type">AnimatedTransitioning</span>()</div><div class="line">    animator.direction = direction</div><div class="line">    animator.transitionType = .present</div><div class="line">    <span class="keyword">return</span> animator</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">interactionControllerForDismissal</span><span class="params">(using animator: UIViewControllerAnimatedTransitioning)</span></span> -&gt; <span class="type">UIViewControllerInteractiveTransitioning</span>? &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.dismissInteractor.isInteractiveTransition ? <span class="keyword">self</span>.dismissInteractor : <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">func</span> <span class="title">interactionControllerForPresentation</span><span class="params">(using animator: UIViewControllerAnimatedTransitioning)</span></span> -&gt; <span class="type">UIViewControllerInteractiveTransitioning</span>? &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.presentInteractor.isInteractiveTransition ? <span class="keyword">self</span>.presentInteractor : <span class="literal">nil</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过使用 SideNavigation 我们可以知道，我们的侧边效果是通过转场来实现的，要达到侧边栏的效果，我们可以自定义转场动画，👆代码中的代理就是转场协议的实现，包括对 non-interactive 和 interactive 动画进行自定义实现。</p>
+<p>（2）自定义 UIPresentationController<br>&emsp;&emsp; 在 <code>public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -&gt; UIPresentationController?</code> 函数中我们需要返回一个指定的 <code>UIPresentationController</code>, 当然，我们这里需要对我们的 <code>UIPresentationController</code> 适当的做一些改造来满足我们的需求:</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// MARK: - Initializers</span></div><div class="line"> <span class="keyword">override</span> <span class="keyword">init</span>(presentedViewController: <span class="type">UIViewController</span>, presenting presentingViewController: <span class="type">UIViewController</span>?) &#123;</div><div class="line">     <span class="keyword">super</span>.<span class="keyword">init</span>(presentedViewController: presentedViewController, presenting: presentingViewController)</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">override</span> <span class="keyword">var</span> frameOfPresentedViewInContainerView: <span class="type">CGRect</span> &#123;</div><div class="line">     <span class="keyword">var</span> frame: <span class="type">CGRect</span> = <span class="keyword">super</span>.frameOfPresentedViewInContainerView</div><div class="line">     <span class="keyword">switch</span> direction &#123;</div><div class="line">     <span class="keyword">case</span> .<span class="keyword">right</span>:</div><div class="line">         frame.origin.x = frame.size.width / <span class="number">3</span></div><div class="line">     <span class="keyword">default</span>:</div><div class="line">         <span class="keyword">break</span></div><div class="line">     &#125;</div><div class="line">     frame.size = size(forChildContentContainer: presentedViewController, withParentContainerSize: containerView!.bounds.size)</div><div class="line">     <span class="keyword">return</span> frame</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">containerViewWillLayoutSubviews</span><span class="params">()</span></span> &#123;</div><div class="line">     presentedView?.frame = frameOfPresentedViewInContainerView</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">size</span><span class="params">(forChildContentContainer container: UIContentContainer, withParentContainerSize parentSize: CGSize)</span></span> -&gt; <span class="type">CGSize</span> &#123;</div><div class="line">     <span class="keyword">return</span> <span class="type">CGSize</span>(width: parentSize.width*(<span class="number">2.0</span>/<span class="number">3.0</span>), height: parentSize.height)</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">presentationTransitionWillBegin</span><span class="params">()</span></span> &#123;</div><div class="line">     containerView?.insertSubview(dimmingView, at: <span class="number">0</span>)</div><div class="line">     <span class="type">NSLayoutConstraint</span>.activate(<span class="type">NSLayoutConstraint</span>.constraints(withVisualFormat: <span class="string">"V:|[dimmingView]|"</span>, options: [], metrics: <span class="literal">nil</span>, views: [<span class="string">"dimmingView"</span>: dimmingView]))</div><div class="line">     <span class="type">NSLayoutConstraint</span>.activate(<span class="type">NSLayoutConstraint</span>.constraints(withVisualFormat: <span class="string">"H:|[dimmingView]|"</span>, options: [], metrics: <span class="literal">nil</span>, views: [<span class="string">"dimmingView"</span>: dimmingView]))</div><div class="line">     <span class="keyword">guard</span> <span class="keyword">let</span> coordinator = presentedViewController.transitionCoordinator <span class="keyword">else</span> &#123;</div><div class="line">         dimmingView.alpha = <span class="number">1.0</span></div><div class="line">         <span class="keyword">return</span></div><div class="line">     &#125;</div><div class="line"></div><div class="line">     coordinator.animate(alongsideTransition: &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">         <span class="keyword">self</span>.dimmingView.alpha = <span class="number">1.0</span></div><div class="line">     &#125;)</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">dismissalTransitionWillBegin</span><span class="params">()</span></span> &#123;</div><div class="line">     <span class="keyword">guard</span> <span class="keyword">let</span> coordinator = presentedViewController.transitionCoordinator <span class="keyword">else</span> &#123;</div><div class="line">         dimmingView.alpha = <span class="number">0.0</span></div><div class="line">         <span class="keyword">return</span></div><div class="line">     &#125;</div><div class="line"></div><div class="line">     coordinator.animate(alongsideTransition: &#123; <span class="number">_</span> <span class="keyword">in</span></div><div class="line">         <span class="keyword">self</span>.dimmingView.alpha = <span class="number">0.0</span></div><div class="line">     &#125;)</div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="built_in">lazy</span> <span class="keyword">var</span> dimmingView: <span class="type">UIView</span> = &#123;</div><div class="line">     <span class="keyword">let</span> dimming = <span class="type">UIView</span>()</div><div class="line">     dimming.translatesAutoresizingMaskIntoConstraints = <span class="literal">false</span></div><div class="line">     dimming.backgroundColor = <span class="type">UIColor</span>(white: <span class="number">0.0</span>, alpha: <span class="number">0.5</span>)</div><div class="line">     dimming.alpha = <span class="number">0.0</span></div><div class="line">     <span class="keyword">let</span> recognizer = <span class="type">UITapGestureRecognizer</span>(target: <span class="keyword">self</span>, action: #selector(handleTap(recognizer:)))</div><div class="line">     dimming.addGestureRecognizer(recognizer)</div><div class="line">     <span class="keyword">return</span> dimming</div><div class="line"> &#125;()</div><div class="line"></div><div class="line"> <span class="meta">@objc</span> <span class="keyword">dynamic</span> <span class="function"><span class="keyword">func</span> <span class="title">handleTap</span><span class="params">(recognizer: UITapGestureRecognizer)</span></span> &#123;</div><div class="line">     presentingViewController.dismiss(animated: <span class="literal">true</span>)</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>在自定义的  <code>UIPresentationController</code> 的过程中，我们对 <code>presentedView</code> 的 <code>frame</code> 进行简单的更改，已达到我们的期望。从效果图中我们也看到，我们还需要一个 <code>dimmingView</code> 来实现半透明效果，这里我们还未它添加了一个手势以便于 <code>dismiss</code> 抽屉。 </p>
+<p>（3）实现 UIViewControllerAnimatedTransitioning </p>
+<p>&emsp;&emsp; <code>public func animationController(forDismissed dismissed: UIViewController) -&gt; UIViewControllerAnimatedTransitioning?</code> 需要返回一个 <code>UIViewControllerAnimatedTransitioning</code> 这里我们来初略的看一下：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">transitionDuration</span><span class="params">(using transitionContext: UIViewControllerContextTransitioning?)</span></span> -&gt; <span class="type">TimeInterval</span> &#123;</div><div class="line">    <span class="keyword">return</span> kAnimationDuration</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">animateTransition</span><span class="params">(using transitionContext: UIViewControllerContextTransitioning)</span></span> &#123;</div><div class="line">    <span class="keyword">let</span> from = transitionContext.viewController(forKey: <span class="type">UITransitionContextViewControllerKey</span>.from)</div><div class="line">    <span class="keyword">let</span> to = transitionContext.viewController(forKey: <span class="type">UITransitionContextViewControllerKey</span>.to)</div><div class="line">    <span class="keyword">switch</span> transitionType &#123;</div><div class="line">    <span class="keyword">case</span> .present:</div><div class="line">        animatePresenting(<span class="keyword">in</span>: transitionContext, to: to!, from: from!)</div><div class="line">    <span class="keyword">case</span> .dismiss:</div><div class="line">        animateDismissing(<span class="keyword">in</span>: transitionContext, to: to!, from: from!)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">animatePresenting</span><span class="params">(<span class="keyword">in</span> transitionContext: UIViewControllerContextTransitioning, to: UIViewController, from: UIViewController)</span></span> &#123;</div><div class="line">    <span class="keyword">var</span> fromRect = transitionContext.initialFrame(<span class="keyword">for</span>: from)</div><div class="line">    <span class="keyword">var</span> toRect = fromRect</div><div class="line">    <span class="keyword">switch</span> direction &#123;</div><div class="line">    <span class="keyword">case</span> .<span class="keyword">left</span>:</div><div class="line">        toRect.origin.x = -toRect.width / <span class="number">3</span> * <span class="number">2</span> <span class="comment">// for the edge panGesture</span></div><div class="line">        <span class="keyword">if</span> #available(iOS <span class="number">11</span>, *) &#123;</div><div class="line">            <span class="comment">// it's maybe a bug of iOS 11, it should be checked some time</span></div><div class="line">            fromRect = <span class="type">CGRect</span>(x: fromRect.minX - (toRect.width / <span class="number">3</span>)/<span class="number">2</span>, y: fromRect.minY, width: fromRect.width, height: fromRect.height)</div><div class="line">        &#125;</div><div class="line">    <span class="keyword">case</span> .<span class="keyword">right</span>:</div><div class="line">        toRect.origin.x = toRect.width / <span class="number">3</span> * <span class="number">2</span></div><div class="line">        <span class="keyword">if</span> #available(iOS <span class="number">11</span>, *) &#123;</div><div class="line">            <span class="comment">// it's maybe a bug of iOS 11, it should be checked some time</span></div><div class="line">            fromRect = <span class="type">CGRect</span>(x: fromRect.minX + (toRect.width / <span class="number">3</span>)/<span class="number">2</span>, y: fromRect.minY, width: fromRect.width, height: fromRect.height)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    to.view.frame = toRect</div><div class="line">    transitionContext.containerView.addSubview(to.view)</div><div class="line">    <span class="type">UIView</span>.animate(withDuration: kAnimationDuration, animations: &#123;</div><div class="line">        to.view.frame = fromRect</div><div class="line">    &#125;) &#123; (<span class="number">_</span>) <span class="keyword">in</span></div><div class="line">        <span class="keyword">if</span> transitionContext.transitionWasCancelled &#123;</div><div class="line">            transitionContext.completeTransition(<span class="literal">false</span>)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            transitionContext.completeTransition(<span class="literal">true</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">animateDismissing</span><span class="params">(<span class="keyword">in</span> transitionContext: UIViewControllerContextTransitioning, to: UIViewController, from: UIViewController)</span></span> &#123;</div><div class="line">    <span class="keyword">var</span> fromRect = transitionContext.initialFrame(<span class="keyword">for</span>: from)</div><div class="line">    <span class="keyword">switch</span> direction &#123;</div><div class="line">    <span class="keyword">case</span> .<span class="keyword">left</span>:</div><div class="line">        fromRect.origin.x = -fromRect.width</div><div class="line">    <span class="keyword">case</span> .<span class="keyword">right</span>:</div><div class="line">        fromRect.origin.x = fromRect.width</div><div class="line">    &#125;</div><div class="line">    <span class="type">UIView</span>.animate(withDuration: kAnimationDuration, animations: &#123;</div><div class="line">        from.view.frame = fromRect</div><div class="line">    &#125;) &#123; (<span class="number">_</span>) <span class="keyword">in</span></div><div class="line">        <span class="keyword">if</span> transitionContext.transitionWasCancelled &#123;</div><div class="line">            transitionContext.completeTransition(<span class="literal">false</span>)</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            transitionContext.completeTransition(<span class="literal">true</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>从  <code>animatePresenting</code>  以及 <code>animateDismissing</code> 我们可以清晰的看到，这里就是对转场这个过程的 <code>start</code> 到 <code>end</code> 过程的位置状态做一个约束，然后在辅以简单的动画。</p>
+<p>（4）UIPercentDrivenInteractiveTransition 的继承<br>&emsp;&emsp; 还记得我们在第一步实现的 <code>func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -&gt; UIViewControllerInteractiveTransitioning?</code>  &amp;&amp;  <code>func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -&gt; UIViewControllerInteractiveTransitioning?</code>  这两个函数吗？我们的用户交互效果就是通过这两个函数来实现的，在这里我们对 <code>UIPercentDrivenInteractiveTransition</code> 进行自定义：</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">convenience</span> <span class="keyword">init</span>(<span class="number">_</span> viewController: <span class="type">UIViewController</span>, with view: <span class="type">UIView</span>?, present: <span class="type">UIViewController</span>?, direction: <span class="type">Direction</span>? = .<span class="keyword">left</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>()</div><div class="line">        <span class="keyword">self</span>.viewController = viewController</div><div class="line">        <span class="keyword">self</span>.direction = direction ?? .<span class="keyword">left</span></div><div class="line">        <span class="keyword">self</span>.presentViewController = present</div><div class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.presentViewController != <span class="literal">nil</span> &#123;</div><div class="line">            <span class="keyword">switch</span> <span class="keyword">self</span>.direction &#123;</div><div class="line">            <span class="keyword">case</span> .<span class="keyword">left</span>:</div><div class="line">                <span class="keyword">let</span> edgePanGesture = <span class="type">UIScreenEdgePanGestureRecognizer</span>(target: <span class="keyword">self</span>, action: #selector(onPan(sender:)))</div><div class="line">                edgePanGesture.edges = .<span class="keyword">left</span></div><div class="line">                edgePanGesture.delegate = <span class="keyword">self</span></div><div class="line">                <span class="keyword">self</span>.viewController.view.addGestureRecognizer(edgePanGesture)</div><div class="line">            <span class="keyword">case</span> .<span class="keyword">right</span>:</div><div class="line">                <span class="keyword">let</span> edgePanGesture = <span class="type">UIScreenEdgePanGestureRecognizer</span>(target: <span class="keyword">self</span>, action: #selector(onPan(sender:)))</div><div class="line">                edgePanGesture.edges = .<span class="keyword">right</span></div><div class="line">                edgePanGesture.delegate = <span class="keyword">self</span></div><div class="line">                <span class="keyword">self</span>.viewController.view.addGestureRecognizer(edgePanGesture)</div><div class="line">                <span class="keyword">break</span></div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">let</span> panGesture = <span class="type">UIPanGestureRecognizer</span>(target: <span class="keyword">self</span>, action: #selector(onPan(sender:)))</div><div class="line">            view?.addGestureRecognizer(panGesture)</div><div class="line">            <span class="keyword">let</span> dismissPanGesture = <span class="type">UIPanGestureRecognizer</span>(target: <span class="keyword">self</span>, action: #selector(onPan(sender:)))</div><div class="line">            <span class="keyword">self</span>.viewController.view.addGestureRecognizer(dismissPanGesture)</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">gestureRecognizerShouldBegin</span><span class="params">(<span class="number">_</span> gestureRecognizer: UIGestureRecognizer)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line"></div><div class="line">        <span class="comment">/// to avoid the interactivePopGestureRecognizer of UINavigationController</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> nav = viewController <span class="keyword">as</span>? <span class="type">UINavigationController</span> &#123;</div><div class="line">            <span class="keyword">return</span> nav.viewControllers.<span class="built_in">count</span> &lt; <span class="number">2</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">onPan</span><span class="params">(sender: UIPanGestureRecognizer)</span></span> &#123;</div><div class="line">        <span class="keyword">let</span>  translation = sender.translation(<span class="keyword">in</span>: sender.view?.superview)</div><div class="line">        <span class="keyword">switch</span> sender.state &#123;</div><div class="line">        <span class="keyword">case</span> .began:</div><div class="line">            <span class="keyword">self</span>.isInteractiveTransition = <span class="literal">true</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">self</span>.presentViewController != <span class="literal">nil</span> &#123;</div><div class="line">                <span class="keyword">self</span>.viewController.present(<span class="keyword">self</span>.presentViewController!, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">self</span>.viewController.dismiss(animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">            &#125;</div><div class="line">        <span class="keyword">case</span> .changed:</div><div class="line">            <span class="keyword">let</span> screenWidth = -<span class="type">UIScreen</span>.main.bounds.size.width</div><div class="line">            <span class="keyword">var</span> dragAmount = <span class="keyword">self</span>.presentViewController == <span class="literal">nil</span> ? screenWidth : -screenWidth</div><div class="line">            <span class="keyword">switch</span> direction &#123;</div><div class="line">            <span class="keyword">case</span> .<span class="keyword">left</span>:</div><div class="line">                dragAmount = <span class="keyword">self</span>.presentViewController == <span class="literal">nil</span> ? screenWidth : -screenWidth</div><div class="line">            <span class="keyword">case</span> .<span class="keyword">right</span>:</div><div class="line">                dragAmount = <span class="keyword">self</span>.presentViewController != <span class="literal">nil</span> ? screenWidth : -screenWidth</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">let</span> threshold: <span class="type">CGFloat</span> = <span class="number">0.20</span></div><div class="line">            <span class="keyword">var</span> percent = translation.x / dragAmount</div><div class="line">            percent = <span class="built_in">max</span>(percent, <span class="number">0.0</span>)</div><div class="line">            percent = <span class="built_in">min</span>(percent, <span class="number">1.0</span>)</div><div class="line">            update(percent)</div><div class="line">            <span class="keyword">self</span>.shouldComplete = percent &gt; threshold</div><div class="line">        <span class="keyword">case</span> .cancelled, .ended:</div><div class="line">            <span class="keyword">self</span>.isInteractiveTransition = <span class="literal">false</span></div><div class="line">            <span class="keyword">if</span> <span class="keyword">self</span>.shouldComplete == <span class="literal">false</span> || sender.state == .cancelled &#123;</div><div class="line">                cancel()</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                finish()</div><div class="line">            &#125;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">``` </div><div class="line">对 `<span class="type">UIPercentDrivenInteractiveTransition</span>` 自定义的主要目的是对 转场动效的更新过程进行控制：</div><div class="line">```swift </div><div class="line">    <span class="comment">// These methods should be called by the gesture recognizer or some other logic</span></div><div class="line">    <span class="comment">// to drive the interaction. This style of interaction controller should only be</span></div><div class="line">    <span class="comment">// used with an animator that implements a CA style transition in the animator's</span></div><div class="line">    <span class="comment">// animateTransition: method. If this type of interaction controller is</span></div><div class="line">    <span class="comment">// specified, the animateTransition: method must ensure to call the</span></div><div class="line">    <span class="comment">// UIViewControllerTransitionParameters completeTransition: method. The other</span></div><div class="line">    <span class="comment">// interactive methods on UIViewControllerContextTransitioning should NOT be</span></div><div class="line">    <span class="comment">// called. If there is an interruptible animator, these methods will either scrub or continue </span></div><div class="line">    <span class="comment">// the transition in the forward or reverse directions.</span></div><div class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">update</span><span class="params">(<span class="number">_</span> percentComplete: CGFloat)</span></span></div></pre></td></tr></table></figure>
+<p>正是如此，我们在  <code>UIPercentDrivenInteractiveTransition</code> 的自定义过程中，通过对 中间视图和侧边视图添加手势来控制转场 <code>update</code> 的进度。<br>&emsp;&emsp;看看项目中的使用效果：<br><img src="http://upload-images.jianshu.io/upload_images/121208-1eaeac71cacb5879.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="Simulator Screen Shot - iPhone 8 - 2017-09-22 at 09.45.13.png"><img src="http://upload-images.jianshu.io/upload_images/121208-730824aa958d22ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt="Simulator Screen Shot - iPhone X - 2017-09-22 at 10.15.15.png"></p>
+<p><img src="https://thumbs.gfycat.com/MagnificentWhichFlyinglemur-size_restricted.gif" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>&emsp;&emsp;实现一个简易的侧边抽屉效果还是很简单的，我们通过实现专场协议，自定义转场动画，添加滑动手势，设置转场始末位置状态，就可以轻松搞定侧边栏。</p>
+<p><a href="https://github.com/CNKCQ/SideNavigation.git" target="_blank" rel="external">Project</a></p>
+<p>水平有限，如有疏漏，望指正<br>欢迎交流，欢迎 star  <a href="https://github.com/CNKCQ" target="_blank" rel="external">CNKCQ</a><br>遗人🌹，手有余香      <a href="http://wangchenquan.com/" target="_blank" rel="external">blog</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/WechatPay.png" alt="CNKCQ WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://7xslr9.com1.z0.glb.clouddn.com/AliPay.png" alt="CNKCQ Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"># iOS</a>
+          
+            <a href="/tags/Swift/" rel="tag"># Swift</a>
+          
+            <a href="/tags/Menu/" rel="tag"># Menu</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/04/MacBook——如何快速配置 iOS 开发环境/" rel="next" title="MacBook——如何快速配置 iOS 开发环境">
+                <i class="fa fa-chevron-left"></i> MacBook——如何快速配置 iOS 开发环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="CNKCQ" />
+          <p class="site-author-name" itemprop="name">CNKCQ</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#接口要简单"><span class="nav-number">2.0.0.0.1.</span> <span class="nav-text">接口要简单</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实现"><span class="nav-number">2.0.0.0.2.</span> <span class="nav-text">实现</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CNKCQ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://https-cnkcq-github-io.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://cnkcq.github.io/2017/09/22/SideNavigation——今晚不加班😂/';
+          this.page.identifier = '2017/09/22/SideNavigation——今晚不加班😂/';
+          this.page.title = 'SideNavigation——今晚不加班😂';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://https-cnkcq-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
